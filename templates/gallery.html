@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+</head>
+<body>
+    <h1>Project Gallery</h1>
+    {% for photo in photos %}
+        <div>
+            <img src="{{ url_for('static', filename='uploads/' + photo.filename) }}" width="300">
+            <p>GPS: {{ photo.gps if photo.gps else "No GPS Data" }}</p>
+        </div>
+    {% endfor %}
+    <a href="/">Upload More</a>
+</body>
+</html>

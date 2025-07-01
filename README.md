@@ -14,3 +14,14 @@ A web-based platform for drone operators, surveyors, and construction profession
 
 🔎 Filtering Tools: Filter by project name, date range, or location.
 🔐 Optional Client Portal: Secure logins for clients to view their site’s timeline and reports.
+
+
+
+
+
+✅ Next Steps (after adding files)
+
+Add database (SQLite) to store photo data
+Add time-lapse slider/compare tool
+Auto-generate PDF reports with captions
+Add date filters or project tagging
