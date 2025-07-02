@@ -77,3 +77,79 @@ a:hover {
     border-radius: 4px;
     margin-bottom: 10px;
 }
+
+
+/* Hero Section (Landing Banner) */
+.hero {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #007bff;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #e6e6e6;
+}
+
+/* About + Features Section */
+.about, .features, .upload-section {
+    padding: 60px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.features {
+    background: #f0f0f0;
+}
+
+.feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature-item {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Upload Section */
+.upload-section form {
+    margin-top: 30px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+    margin-top: 40px;
+}

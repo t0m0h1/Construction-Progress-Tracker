@@ -1,17 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Photo</title>
+    <title>Construction Progress Tracker</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Upload Site Photo</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="photo" required>
-        <button type="submit">Upload</button>
-    </form>
-    <a href="/gallery">View Gallery</a>
+
+    <header class="hero">
+        <h1>Construction Progress Tracker</h1>
+        <p>Your aerial imagery tool for monitoring and reporting site progress</p>
+        <a href="#upload" class="cta-button">Get Started</a>
+    </header>
+
+    <section class="about">
+        <h2>Why Use This Tool?</h2>
+        <p>This web-based platform helps drone operators and surveyors upload aerial site images, view changes over time, and generate professional reports for clients or project teams.</p>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>Upload Photos</h3>
+                <p>Easily upload your drone images from site visits with GPS metadata extraction.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Time-Lapse Compare</h3>
+                <p>Visualise progress with side-by-side and time-lapse comparison tools.</p>
+            </div>
+            <div class="feature-item">
+                <h3>GPS Tagging</h3>
+                <p>Group and sort images based on automatic GPS location data.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Generate Reports</h3>
+                <p>Export printable PDF progress reports with project metadata and image history.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="upload-section" id="upload">
+        <h2>Upload Your Site Photo</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="photo" required>
+            <button type="submit">Upload</button>
+        </form>
+        <a href="/gallery" class="view-gallery">View Gallery</a>
+    </section>
+
+    <footer>
+        <p>&copy; {{ 2025 }} Construction Progress Tracker | Built by Tom Hathaway</p>
+    </footer>
+
 </body>
 </html>
