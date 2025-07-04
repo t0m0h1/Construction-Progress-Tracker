@@ -145,6 +145,72 @@ a:hover {
     margin-top: 30px;
 }
 
+/* Upload Section Styling */
+.upload-form input[type="text"],
+.upload-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Drag-and-drop area */
+.dropzone {
+    border: 2px dashed #888;
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropzone:hover {
+    background-color: #f0f0f0;
+}
+
+/* Preview Image Styling */
+.preview {
+    margin-top: 10px;
+}
+
+.preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Future Features Section */
+.future-features {
+    padding: 30px;
+    background-color: #fff9f0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.future-features h2 {
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.future-features ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.future-features li {
+    padding: 10px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee;
+}
+
+
+
+
+
 /* Footer */
 footer {
     text-align: center;

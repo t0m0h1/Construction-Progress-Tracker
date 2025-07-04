@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Construction Progress Tracker</title>
     <link rel="stylesheet" href="../static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -42,16 +43,50 @@
 
     <section class="upload-section" id="upload">
         <h2>Upload Your Site Photo</h2>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="photo" required>
+        <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <label for="project-name">Project Name</label>
+            <input type="text" name="project_name" id="project-name" required>
+
+            <label for="site-notes">Site Notes</label>
+            <textarea name="notes" id="site-notes" rows="3" placeholder="Any observations or descriptions?"></textarea>
+
+            <div class="dropzone" onclick="document.getElementById('photo').click();">
+                Click or drag your photo here to upload.
+                <input type="file" name="photo" id="photo" style="display: none;" required onchange="previewImage(event)">
+            </div>
+
+            <div class="preview" id="preview"></div>
+
             <button type="submit">Upload</button>
         </form>
         <a href="/gallery" class="view-gallery">View Gallery</a>
     </section>
 
+    <section class="future-features">
+        <h2>Coming Soon</h2>
+        <ul>
+            <li><strong>📆 Filter by date range and project</strong></li>
+            <li><strong>🪞 Time-lapse photo comparison</strong></li>
+            <li><strong>🗺️ Group images by GPS location on a map</strong></li>
+            <li><strong>📄 Download progress PDF reports</strong></li>
+        </ul>
+    </section>
+
     <footer>
-        <p>&copy; {{ 2025 }} Construction Progress Tracker | Built by Tom Hathaway</p>
+        <p>&copy; 2025 Construction Progress Tracker | Built by Tom Hathaway</p>
     </footer>
 
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = '';
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                preview.appendChild(img);
+            }
+        }
+    </script>
 </body>
 </html>
