@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Construction Progress Tracker</title>
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/twentytwenty.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -62,6 +63,17 @@
         <a href="/gallery" class="view-gallery">View Gallery</a>
     </section>
 
+    <section class="comparison-section">
+        <h2>Compare Site Progress</h2>
+        <div class="comparison-wrapper">
+            <div class="twentytwenty-container">
+                <img src="/static/images/before.jpg" alt="Before image">
+                <img src="/static/images/after.jpg" alt="After image">
+            </div>
+        </div>
+    </section>
+    
+
     <section class="future-features">
         <h2>Coming Soon</h2>
         <ul>
@@ -75,18 +87,24 @@
     <footer>
         <p>&copy; 2025 Construction Progress Tracker | Built by Tom Hathaway</p>
     </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/2.0.0/jquery.event.move.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/jquery.twentytwenty.min.js"></script>
 
-    <script>
-        function previewImage(event) {
-            const preview = document.getElementById('preview');
-            preview.innerHTML = '';
-            const file = event.target.files[0];
-            if (file) {
-                const img = document.createElement('img');
-                img.src = URL.createObjectURL(file);
-                preview.appendChild(img);
+        <script>
+            function previewImage(event) {
+                const preview = document.getElementById('preview');
+                preview.innerHTML = '';
+                const file = event.target.files[0];
+                if (file) {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    preview.appendChild(img);
+                }
             }
-        }
-    </script>
-</body>
-</html>
+            $(function(){
+                $(".twentytwenty-container").twentytwenty();
+            });
+        </script>
+    </body>
+    </html>
