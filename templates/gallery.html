@@ -1,53 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gallery</title>
+    <meta charset="UTF-8">
+    <title>Project Gallery</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
+        .project {
+            margin-bottom: 40px;
             padding: 20px;
+            border-bottom: 1px solid #ddd;
         }
-        h1 {
-            color: #333;
+
+        .project h2 {
+            margin-bottom: 10px;
+            color: #2c3e50;
         }
-        div {
-            margin-bottom: 20px;
-            padding: 10px;
+
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .photo-card {
+            flex: 1 0 200px;
+            background: #fff;
             border: 1px solid #ccc;
-            background-color: #fff;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
         }
-        img {
-            border-radius: 5px;
+
+        .photo-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
         }
-        p {
-            color: #666;
+
+        .notes {
+            font-size: 0.9em;
+            color: #555;
         }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover {
-            background-color: #0056b3;
-        }
-        /* END: Internal CSS */
     </style>
 </head>
 <body>
     <h1>Project Gallery</h1>
-    {% for photo in photos %}
-        <div>
-            <img src="{{ url_for('static', filename='uploads/' + photo.filename) }}" width="300">
-            <p>GPS: {{ photo.gps if photo.gps else "No GPS Data" }}</p>
+
+    {% for project, photo_list in projects.items() %}
+    <div class="project">
+        <h2>{{ project }}</h2>
+        <div class="photo-grid">
+            {% for photo in photo_list %}
+            <div class="photo-card">
+                <img src="{{ url_for('static', filename=photo.filepath) }}" alt="{{ photo.filename }}">
+                <p>{{ photo.filename }}</p>
+                {% if photo.notes %}
+                    <p class="notes">{{ photo.notes }}</p>
+                {% endif %}
+                <p class="notes">GPS: {{ photo.gps }}</p>
+                <!-- Add Edit/Delete buttons here -->
+                <form method="POST" action="{{ url_for('delete_photo') }}" style="margin-top: 5px;">
+                    <input type="hidden" name="project" value="{{ project }}">
+                    <input type="hidden" name="filename" value="{{ photo.filename }}">
+                    <button type="submit">🗑️ Delete</button>
+                </form>
+                
+            </div>
+            {% endfor %}
         </div>
+    </div>
     {% endfor %}
-    <a href="/">Upload More</a>
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
 </body>
 </html>

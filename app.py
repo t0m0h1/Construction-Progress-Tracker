@@ -68,3 +68,21 @@ def compare_project():
     return render_template('compare.html',
                            before_image=before_path,
                            after_image=after_path)
+
+
+@app.route('/delete_photo', methods=['POST'])
+def delete_photo():
+    project = request.form.get('project')
+    filename = request.form.get('filename')
+    safe_project = secure_filename(project)
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], safe_project, filename)
+
+    # Remove from disk
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    # Remove from memory
+    if project in projects:
+        projects[project] = [p for p in projects[project] if p['filename'] != filename]
+
+    return redirect(url_for('gallery'))
