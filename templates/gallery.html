@@ -5,40 +5,40 @@
     <title>Project Gallery</title>
     <style>
         .project {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 40px; /* Space between projects */
+            padding: 20px; /* Padding inside each project */
+            border-bottom: 1px solid #ddd; /* Bottom border for separation */
         }
 
         .project h2 {
-            margin-bottom: 10px;
-            color: #2c3e50;
+            margin-bottom: 10px; /* Space below project title */
+            color: #2c3e50; /* Color of project title */
         }
 
         .photo-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            display: flex; /* Use flexbox for layout */
+            flex-wrap: wrap; /* Allow wrapping of items */
+            gap: 10px; /* Space between photo cards */
         }
 
         .photo-card {
-            flex: 1 0 200px;
-            background: #fff;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
+            flex: 1 0 200px; /* Flex item with a minimum width */
+            background: #fff; /* Background color of photo card */
+            border: 1px solid #ccc; /* Border around photo card */
+            padding: 10px; /* Padding inside photo card */
+            border-radius: 8px; /* Rounded corners */
+            text-align: center; /* Center text inside photo card */
         }
 
         .photo-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
+            max-width: 100%; /* Responsive image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 4px; /* Rounded corners for image */
         }
 
         .notes {
-            font-size: 0.9em;
-            color: #555;
+            font-size: 0.9em; /* Smaller font size for notes */
+            color: #555; /* Color of notes text */
         }
     </style>
 </head>
@@ -54,14 +54,14 @@
                 <img src="{{ url_for('static', filename=photo.filepath) }}" alt="{{ photo.filename }}">
                 <p>{{ photo.filename }}</p>
                 {% if photo.notes %}
-                    <p class="notes">{{ photo.notes }}</p>
+                    <p class="notes">{{ photo.notes }}</p> <!-- Display notes if available -->
                 {% endif %}
-                <p class="notes">GPS: {{ photo.gps }}</p>
+                <p class="notes">GPS: {{ photo.gps }}</p> <!-- Display GPS information -->
                 <!-- Add Edit/Delete buttons here -->
                 <form method="POST" action="{{ url_for('delete_photo') }}" style="margin-top: 5px;">
-                    <input type="hidden" name="project" value="{{ project }}">
-                    <input type="hidden" name="filename" value="{{ photo.filename }}">
-                    <button type="submit">🗑️ Delete</button>
+                    <input type="hidden" name="project" value="{{ project }}"> <!-- Hidden input for project name -->
+                    <input type="hidden" name="filename" value="{{ photo.filename }}"> <!-- Hidden input for photo filename -->
+                    <button type="submit">🗑️ Delete</button> <!-- Delete button -->
                 </form>
                 
             </div>
@@ -70,6 +70,6 @@
     </div>
     {% endfor %}
 
-    <a href="{{ url_for('index') }}">Back to Home</a>
+    <a href="{{ url_for('index') }}">Back to Home</a> <!-- Link to return to home -->
 </body>
 </html>
