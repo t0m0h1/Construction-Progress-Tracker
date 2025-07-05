@@ -4,30 +4,51 @@
     <meta charset="UTF-8">
     <title>Project Gallery</title>
     <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a clean font for the body */
+            background-color: #f4f4f4; /* Light background color */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding around the body */
+        }
+
+        h1 {
+            text-align: center; /* Center the main title */
+            color: #2c3e50; /* Color of main title */
+        }
+
         .project {
             margin-bottom: 40px; /* Space between projects */
             padding: 20px; /* Padding inside each project */
-            border-bottom: 1px solid #ddd; /* Bottom border for separation */
+            border: 1px solid #ddd; /* Border around project */
+            border-radius: 8px; /* Rounded corners for project */
+            background-color: #fff; /* Background color of project */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
         }
 
         .project h2 {
             margin-bottom: 10px; /* Space below project title */
-            color: #2c3e50; /* Color of project title */
+            color: #2980b9; /* Color of project title */
         }
 
         .photo-grid {
             display: flex; /* Use flexbox for layout */
             flex-wrap: wrap; /* Allow wrapping of items */
-            gap: 10px; /* Space between photo cards */
+            gap: 15px; /* Space between photo cards */
         }
 
         .photo-card {
-            flex: 1 0 200px; /* Flex item with a minimum width */
+            flex: 1 0 220px; /* Flex item with a minimum width */
             background: #fff; /* Background color of photo card */
             border: 1px solid #ccc; /* Border around photo card */
-            padding: 10px; /* Padding inside photo card */
+            padding: 15px; /* Padding inside photo card */
             border-radius: 8px; /* Rounded corners */
             text-align: center; /* Center text inside photo card */
+            transition: transform 0.2s; /* Smooth transition for hover effect */
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05); /* Scale up on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow on hover */
         }
 
         .photo-card img {
@@ -39,6 +60,19 @@
         .notes {
             font-size: 0.9em; /* Smaller font size for notes */
             color: #555; /* Color of notes text */
+        }
+
+        a {
+            display: block; /* Make the link a block element */
+            text-align: center; /* Center the link */
+            margin-top: 20px; /* Space above the link */
+            color: #2980b9; /* Color of the link */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Bold text for the link */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
         }
     </style>
 </head>
