@@ -9,47 +9,62 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
-# This will act as temporary in-memory storage
-photos = []
+# Store projects and their photos
+projects = {}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', projects=projects)
 
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files['photo']
-    project_name = request.form.get('project_name')
+    project_name = request.form.get('project_name').strip()
     notes = request.form.get('notes')
 
-    if file:
+    if file and project_name:
+        safe_project = secure_filename(project_name)
+        project_folder = os.path.join(app.config['UPLOAD_FOLDER'], safe_project)
+        os.makedirs(project_folder, exist_ok=True)
+
         filename = secure_filename(file.filename)
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        filepath = os.path.join(project_folder, filename)
         file.save(filepath)
 
         gps = get_gps(filepath)
 
-        photos.append({
+        photo_data = {
             'filename': filename,
-            'filepath': filepath,
-            'project_name': project_name,
+            'filepath': f'uploads/{safe_project}/{filename}',  # for use with url_for('static', ...)
             'notes': notes,
             'gps': gps
-        })
+        }
+
+        if project_name not in projects:
+            projects[project_name] = []
+
+        projects[project_name].append(photo_data)
 
     return redirect(url_for('gallery'))
 
 @app.route('/gallery')
 def gallery():
-    return render_template('gallery.html', photos=photos)
+    return render_template('gallery.html', projects=projects)
 
-@app.route('/compare')
-def compare():
-    # Use two sample images from static/uploads for now
-    return render_template('compare.html', 
-        before_image='static/uploads/before.jpg', 
-        after_image='static/uploads/after.jpg'
-    )
+@app.route('/compare_select')
+def compare_select():
+    return render_template('compare_select.html', projects=projects)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/compare_project', methods=['POST'])
+def compare_project():
+    project = request.form.get('project')
+    before = request.form.get('before_image')
+    after = request.form.get('after_image')
+
+    project_photos = projects.get(project, [])
+    before_path = next((p['filepath'] for p in project_photos if p['filename'] == before), None)
+    after_path = next((p['filepath'] for p in project_photos if p['filename'] == after), None)
+
+    return render_template('compare.html',
+                           before_image=before_path,
+                           after_image=after_path)

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Project for Comparison</title>
+</head>
+<body>
+    <h1>Compare Photos by Project</h1>
+
+    <form method="post" action="{{ url_for('compare_project') }}">
+        <label for="project">Project:</label>
+        <select name="project" id="project" required onchange="this.form.submit()">
+            <option value="">-- Select Project --</option>
+            {% for project in projects %}
+                <option value="{{ project }}">{{ project }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    {% if request.method == 'POST' or request.args.get('show_images') %}
+    <form method="post" action="{{ url_for('compare_project') }}">
+        <input type="hidden" name="project" value="{{ request.form.get('project') or request.args.get('project') }}">
+        <label>Before Image:</label>
+        <select name="before_image" required>
+            {% for photo in projects[request.form.get('project') or request.args.get('project')] %}
+            <option value="{{ photo.filename }}">{{ photo.filename }}</option>
+            {% endfor %}
+        </select>
+
+        <label>After Image:</label>
+        <select name="after_image" required>
+            {% for photo in projects[request.form.get('project') or request.args.get('project')] %}
+            <option value="{{ photo.filename }}">{{ photo.filename }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Compare</button>
+    </form>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
