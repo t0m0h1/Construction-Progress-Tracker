@@ -16,7 +16,13 @@ A web-based platform for drone operators, surveyors, and construction profession
 🔐 Optional Client Portal: Secure logins for clients to view their site’s timeline and reports.
 
 
+User flow: Organise Images by Project Folder + Compare Within Projects
 
+✅ You Want:
+Users to create a project
+Upload photos linked to a project
+Store those photos in folders by project name
+Use the image comparison slider based on selected project
 
 
 ✅ Next Steps (after adding files)
