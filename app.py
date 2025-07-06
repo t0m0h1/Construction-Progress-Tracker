@@ -126,6 +126,31 @@ def delete_photo():
     flash("Image deleted.")
     return redirect(url_for('gallery'))
 
+
+# Log in and sign up routes
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        # Placeholder for authentication logic
+        flash(f'Logged in as {email} (authentication not yet implemented)')
+        return redirect(url_for('index'))
+    return render_template('login.html')
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        # Placeholder for account creation logic
+        flash(f'Account created for {username} (signup not yet implemented)')
+        return redirect(url_for('login'))
+    return render_template('signup.html')
+
+
+
 # --- Run ---
 if __name__ == '__main__':
     app.run(debug=True)

@@ -11,6 +11,30 @@ h1, h2 {
     margin-top: 20px;
 }
 
+/* Header */
+
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.auth-links a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
 form {
     width: 90%;
     max-width: 500px;

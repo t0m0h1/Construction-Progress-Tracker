@@ -9,11 +9,20 @@
 </head>
 <body>
 
+    <!-- New header with links -->
     <header class="hero">
+        <div class="header-top">
+            <div class="auth-links">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}">Sign Up</a>
+            </div>
+        </div>
         <h1>Construction Progress Tracker</h1>
         <p>Your aerial imagery tool for monitoring and reporting site progress</p>
         <a href="#upload" class="cta-button">Get Started</a>
     </header>
+    
+
 
     <section class="about">
         <h2>Why Use This Tool?</h2>
