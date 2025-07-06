@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.utils import secure_filename
 import os
 import json
@@ -148,6 +148,14 @@ def signup():
         flash(f'Account created for {username} (signup not yet implemented)')
         return redirect(url_for('login'))
     return render_template('signup.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    flash("You’ve been logged out.")
+    return redirect(url_for('index'))
+
 
 
 

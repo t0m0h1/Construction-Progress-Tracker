@@ -11,12 +11,23 @@
 
     <!-- New header with links -->
     <header class="hero">
-        <div class="header-top">
-            <div class="auth-links">
-                <a href="{{ url_for('login') }}">Login</a>
-                <a href="{{ url_for('signup') }}">Sign Up</a>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="#upload">Upload</a>
+                <a href="{{ url_for('gallery') }}">Gallery</a>
+                <a href="{{ url_for('compare_select') }}">Compare</a>
             </div>
-        </div>
+            <div class="nav-right">
+                {% if session.get('user') %}
+                    <span>Welcome, {{ session['user'] }}</span>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('signup') }}">Sign Up</a>
+                {% endif %}
+            </div>
+        </nav>
         <h1>Construction Progress Tracker</h1>
         <p>Your aerial imagery tool for monitoring and reporting site progress</p>
         <a href="#upload" class="cta-button">Get Started</a>

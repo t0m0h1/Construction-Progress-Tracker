@@ -11,23 +11,44 @@ h1, h2 {
     margin-top: 20px;
 }
 
-/* Header */
 
-.header-top {
+
+/* Navigation */
+.navbar {
     display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f0f4f8;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
-.auth-links a {
-    margin-left: 1rem;
+.navbar a {
+    margin-right: 1rem;
     text-decoration: none;
     color: #1e3a8a;
     font-weight: 600;
 }
 
-.auth-links a:hover {
+.navbar a:hover {
     text-decoration: underline;
+}
+
+.nav-left a:last-child {
+    margin-right: 0;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right span {
+    margin-right: 1rem;
+    font-weight: 500;
+    color: #111827;
 }
 
 
