@@ -22,27 +22,32 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 # --- Load/Save JSON Data ---
 def load_projects():
+    # Load projects from JSON file if it exists
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'r') as f:
             return json.load(f)
     return {}
 
 def save_projects(data):
+    # Save projects to JSON file
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=2)
 
 # --- Allowed file check ---
 def allowed_file(filename):
+    # Check if the uploaded file has an allowed extension
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # --- Routes ---
 @app.route('/')
 def index():
+    # Render the index page with loaded projects
     projects = load_projects()
     return render_template('index.html', projects=projects)
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    # Handle file upload and project data submission
     file = request.files.get('photo')
     project_name = request.form.get('project_name', '').strip()
     notes = request.form.get('notes', '').strip()
@@ -80,16 +85,19 @@ def upload():
 
 @app.route('/gallery')
 def gallery():
+    # Render the gallery page with loaded projects
     projects = load_projects()
     return render_template('gallery.html', projects=projects)
 
 @app.route('/compare_select')
 def compare_select():
+    # Render the comparison selection page with loaded projects
     projects = load_projects()
     return render_template('compare_select.html', projects=projects)
 
 @app.route('/compare_project', methods=['POST'])
 def compare_project():
+    # Handle project comparison and render comparison page
     projects = load_projects()
     project = request.form.get('project')
     before = request.form.get('before_image')
@@ -107,6 +115,7 @@ def compare_project():
 
 @app.route('/delete_photo', methods=['POST'])
 def delete_photo():
+    # Handle photo deletion from the project
     project = request.form.get('project')
     filename = request.form.get('filename')
     projects = load_projects()
@@ -126,10 +135,10 @@ def delete_photo():
     flash("Image deleted.")
     return redirect(url_for('gallery'))
 
-
 # Log in and sign up routes
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # Handle user login
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -140,6 +149,7 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    # Handle user signup
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
@@ -149,15 +159,12 @@ def signup():
         return redirect(url_for('login'))
     return render_template('signup.html')
 
-
 @app.route('/logout')
 def logout():
+    # Handle user logout
     session.pop('user', None)
     flash("You’ve been logged out.")
     return redirect(url_for('index'))
-
-
-
 
 # --- Run ---
 if __name__ == '__main__':
