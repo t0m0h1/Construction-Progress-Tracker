@@ -1,19 +1,23 @@
+/* Reset + Base Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f7f7f7;
     color: #333;
+    line-height: 1.6;
 }
 
 h1, h2 {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
+section {
+    padding: 60px 20px;
+}
 
-
-/* Navigation */
+/* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -21,73 +25,194 @@ h1, h2 {
     padding: 1rem 2rem;
     background-color: #f0f4f8;
     border-bottom: 1px solid #ddd;
-    border-radius: 5px;
     margin-bottom: 20px;
-}
-
-.navbar a {
-    margin-right: 1rem;
-    text-decoration: none;
-    color: #1e3a8a;
+    border-radius: 5px;
     font-weight: 600;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
+.navbar a {
+    position: relative;
+    margin-right: 1.5rem;
+    color: #1e3a8a;
+    text-decoration: none;
+    padding: 0.3rem 0.2rem;
+    transition: color 0.3s ease;
 }
 
+/* Hover underline animation */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #1e3a8a;
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #144273;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* Remove right margin on last nav-left link */
 .nav-left a:last-child {
     margin-right: 0;
 }
 
+/* Nav right spacing */
 .nav-right {
     display: flex;
     align-items: center;
 }
 
 .nav-right span {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
     font-weight: 500;
     color: #111827;
 }
 
 
+/* Hero Section */
+.hero {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 100px 20px 80px;
+}
 
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
 
+.hero p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-
-form {
-    width: 90%;
-    max-width: 500px;
-    margin: 20px auto;
+.cta-button {
+    display: inline-block;
     background: white;
-    padding: 20px;
+    color: #007bff;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #e6e6e6;
+}
+
+/* About & Features */
+.about, .features, .upload-section {
+    background: #fff;
+    text-align: center;
+}
+
+.features {
+    background: #f0f0f0;
+}
+
+.feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Upload Section */
+form.upload-form {
+    width: 90%;
+    max-width: 550px;
+    margin: 40px auto 0;
+    background: white;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+.upload-form label {
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    margin: 15px 0 5px;
 }
 
+.upload-form input[type="text"],
+.upload-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.dropzone {
+    border: 2px dashed #888;
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropzone:hover {
+    background-color: #f0f0f0;
+}
+
+.preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Button Styles */
 button {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #007bff;
     color: white;
     font-weight: bold;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+/* Links */
 a {
     display: block;
     text-align: center;
@@ -100,12 +225,13 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Gallery */
 .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 25px;
+    padding: 30px 20px;
 }
 
 .gallery-item {
@@ -123,145 +249,11 @@ a:hover {
     margin-bottom: 10px;
 }
 
-
-/* Hero Section (Landing Banner) */
-.hero {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.2em;
-    margin-top: 10px;
-}
-
-.cta-button {
-    display: inline-block;
-    background: white;
-    color: #007bff;
-    padding: 12px 25px;
-    font-weight: bold;
-    border-radius: 6px;
-    margin-top: 20px;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.cta-button:hover {
-    background: #e6e6e6;
-}
-
-/* About + Features Section */
-.about, .features, .upload-section {
-    padding: 60px 20px;
-    background: #fff;
-    text-align: center;
-}
-
-.features {
-    background: #f0f0f0;
-}
-
-.feature-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.feature-item {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    width: 250px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* Upload Section */
-.upload-section form {
-    margin-top: 30px;
-}
-
-/* Upload Section Styling */
-.upload-form input[type="text"],
-.upload-form textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Drag-and-drop area */
-.dropzone {
-    border: 2px dashed #888;
-    padding: 40px;
-    text-align: center;
-    background-color: #f9f9f9;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.dropzone:hover {
-    background-color: #f0f0f0;
-}
-
-/* Preview Image Styling */
-.preview {
-    margin-top: 10px;
-}
-
-.preview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Future Features Section */
-.future-features {
-    padding: 30px;
-    background-color: #fff9f0;
-    border-top: 1px solid #e0e0e0;
-}
-
-.future-features h2 {
-    margin-bottom: 15px;
-    font-size: 1.6em;
-    text-align: center;
-}
-
-.future-features ul {
-    list-style: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.future-features li {
-    padding: 10px;
-    font-size: 1.1em;
-    border-bottom: 1px solid #eee;
-}
-
-
+/* Comparison Section */
 .comparison-section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
     background-color: #f5f5f5;
-}
-
-.comparison-section h2 {
-    margin-bottom: 20px;
-    font-size: 1.8em;
 }
 
 .comparison-wrapper {
@@ -274,17 +266,58 @@ a:hover {
     height: auto;
 }
 
+/* Future Features */
+.future-features {
+    padding: 50px 20px;
+    background-color: #fff9f0;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
 
+.future-features ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
+.future-features li {
+    padding: 12px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee;
+}
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     background: #333;
     color: white;
-    margin-top: 40px;
+    margin-top: 60px;
+    font-size: 0.9rem;
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
+    .feature-grid {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .upload-form {
+        padding: 15px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+    }
+}
