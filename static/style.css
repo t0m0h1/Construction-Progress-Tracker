@@ -322,20 +322,29 @@ footer {
     }
 }
 
+
+/* Comparison Section Styles */
 .comparison-wrapper {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 0 10px;
     text-align: center;
 }
 
 .twentytwenty-container.demo-comparison {
     width: 100%;
-    height: auto;
     aspect-ratio: 4 / 3;
+    position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.twentytwenty-container.demo-comparison img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 .comparison-caption {
