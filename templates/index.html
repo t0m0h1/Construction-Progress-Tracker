@@ -83,14 +83,18 @@
         <a href="/gallery" class="view-gallery">View Gallery</a>
     </section>
 
+
     <section class="comparison-section">
-    <h3 style="text-align:center;">Sample Progress Comparison</h3>
-    <div class="twentytwenty-container" style="margin: 0 auto; max-width: 800px;">
-        <img src="{{ url_for('static', filename='uploads/before.jpg') }}" alt="Day 1">
-        <img src="{{ url_for('static', filename='uploads/after.jpg') }}" alt="Day 30">
-    </div>
-        <p style="text-align:center;">Drag the slider to see changes between Day 1 and Day 30.</p>
+        <h2>Compare Site Progress</h2>
+        <div class="comparison-wrapper">
+            <div class="twentytwenty-container demo-comparison">
+                <img src="{{ url_for('static', filename='uploads/before.jpg') }}" alt="Before image">
+                <img src="{{ url_for('static', filename='uploads/after.jpg') }}" alt="After image">
+            </div>
+            <p class="comparison-caption">Drag the slider to compare Day 1 and Day 30</p>
+        </div>
     </section>
+    
     
 
     <section class="future-features">
