@@ -146,6 +146,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/2.0.0/jquery.event.move.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/jquery.twentytwenty.min.js"></script>
   <script>
+    $(window).on('load', function() {
+      $(".twentytwenty-container").twentytwenty({
+        default_offset_pct: 0.5,
+        orientation: "horizontal",
+        before_label: "Before",
+        after_label: "After",
+        no_overlay: false,
+      });
+    });
+
+    // Function to preview uploaded image
     function previewImage(event) {
       const preview = document.getElementById("preview");
       preview.innerHTML = "";
@@ -156,16 +167,6 @@
         preview.appendChild(img);
       }
     }
-
-    $(document).ready(function () {
-      $(".twentytwenty-container").twentytwenty({
-        default_offset_pct: 0.5,
-        orientation: "horizontal",
-        before_label: "Before",
-        after_label: "After",
-        no_overlay: false,
-      });
-    });
   </script>
 </body>
 </html>
